@@ -36,24 +36,24 @@
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    height: 24px; /* Height of the vertical line */
-    border-right: 1px solid #ccc; /* Color and style of the vertical line */
+    height: 24px; 
+    border-right: 1px solid #ccc; 
   }
 
   @media (max-width: 576px) {
     .name {
-        font-size: 1.1rem; /* Adjust font size for smaller screens */
-        margin-right: 5px; /* Adjust margin for smaller screens */
+        font-size: 1.1rem; 
+        margin-right: 5px; 
     }
 
     .title {
-        font-size: 0.9rem; /* Adjust font size for smaller screens */
+        font-size: 0.9rem;
     }
 
     .circle {
-        width: 25px; /* Adjust circle size for smaller screens */
-        height: 25px; /* Adjust circle size for smaller screens */
-        margin-right: 5px; /* Adjust margin for smaller screens */
-        margin-left: 10px; /* Adjust margin for smaller screens */
+        width: 25px; 
+        height: 25px; 
+        margin-right: 5px; 
+        margin-left: 10px;
     }
 }
