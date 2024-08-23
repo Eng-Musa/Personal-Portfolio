@@ -1,0 +1,6 @@
+.footer-text {
+    margin-bottom: 5px; /* Adjust this value to control the spacing */
+    margin-top: 0;
+    font-size: 0.9rem;
+    font-weight: lighter;
+}
