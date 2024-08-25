@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @keyframes moveUp {
     0% {
-        transform: translateY(150px);
+        transform: translateY(100px);
         opacity: 0;
     }
     100% {
