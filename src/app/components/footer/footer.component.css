@@ -4,3 +4,8 @@
     font-size: 0.9rem;
     font-weight: lighter;
 }
+
+.footer{
+    z-index: 999;
+    position: relative;
+}
