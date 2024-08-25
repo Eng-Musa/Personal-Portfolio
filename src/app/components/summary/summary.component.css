@@ -26,4 +26,21 @@
     }
 
   }
+
+
+  @keyframes moveUp {
+    0% {
+        transform: translateY(150px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-up {
+    animation: moveUp 1s ease-out;
+}
+
   
