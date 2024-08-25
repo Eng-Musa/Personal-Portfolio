@@ -29,7 +29,7 @@
 
   .nav-item {
     position: relative;
-    padding: 0 10px; /* Adjust spacing as needed */
+    padding: 0 10px; 
   }
   
   .vertical-line::after {
