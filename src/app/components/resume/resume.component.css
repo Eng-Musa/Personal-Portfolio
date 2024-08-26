@@ -1,0 +1,14 @@
+.row {
+    position: relative;
+  }
+  
+  .row::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    background-color: #e0e0e0;
+  }
