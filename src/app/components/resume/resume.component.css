@@ -28,3 +28,35 @@
   border-radius: 50%;
   background-color: black;
 }
+
+/* Animation keyframes for the left content */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animation keyframes for the right content */
+@keyframes slideInRight {
+  from {
+    transform: translateX(20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.left-content {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.right-content {
+  animation: slideInRight 1s ease-out forwards;
+}
