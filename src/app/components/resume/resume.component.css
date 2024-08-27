@@ -32,7 +32,7 @@
 /* Animation keyframes for the left content */
 @keyframes slideInLeft {
   from {
-    transform: translateX(-20%);
+    transform: translateX(-30%);
     opacity: 0;
   }
   to {
@@ -44,7 +44,7 @@
 /* Animation keyframes for the right content */
 @keyframes slideInRight {
   from {
-    transform: translateX(20%);
+    transform: translateX(30%);
     opacity: 0;
   }
   to {
@@ -56,7 +56,7 @@
 /* Animation Keyframes for dot */
 @keyframes slideUp {
   from {
-    transform: translateY(20%);
+    transform: translateY(30%);
     opacity: 0;
   }
   to {
