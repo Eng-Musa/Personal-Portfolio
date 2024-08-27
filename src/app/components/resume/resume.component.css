@@ -13,11 +13,11 @@
   background-color: #e0e0e0;
 }
 
-.circle{
+.dot{
   position: relative;
 }
 
-.circle::after{
+.dot::after{
   content: '';
   position: absolute;
   top: 8px;
@@ -63,12 +63,6 @@
     transform: translateY(0); /* Fix the property to translateY for correct animation */
     opacity: 1;
   }
-}
-
-/* Initial state for animations */
-.left-content, .right-content, .dot {
-  opacity: 0;
-  transform: translateX(0); /* or translateY for dot */
 }
 
 /* Add the animation class to apply the animation */
