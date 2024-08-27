@@ -53,26 +53,34 @@
   }
 }
 
-/* Animation Keyframes for dot */
+/* Animation keyframes for dot */
 @keyframes slideUp {
   from {
     transform: translateY(30%);
     opacity: 0;
   }
   to {
-    transform: translateX(0);
+    transform: translateY(0); /* Fix the property to translateY for correct animation */
     opacity: 1;
   }
 }
 
-.left-content {
+/* Initial state for animations */
+.left-content, .right-content, .dot {
+  opacity: 0;
+  transform: translateX(0); /* or translateY for dot */
+}
+
+/* Add the animation class to apply the animation */
+.animate-left {
   animation: slideInLeft 1s ease-out forwards;
 }
 
-.right-content {
+.animate-right {
   animation: slideInRight 1s ease-out forwards;
 }
 
-.dot{
+.animate-dot {
   animation: slideUp 1s ease-out forwards;
 }
+
