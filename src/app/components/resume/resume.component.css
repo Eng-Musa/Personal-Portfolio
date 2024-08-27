@@ -1,8 +1,8 @@
-.row {
+.vertical-line {
   position: relative;
 }
 
-.row::before {
+.vertical-line::before {
   content: '';
   position: absolute;
   top: 10px;
