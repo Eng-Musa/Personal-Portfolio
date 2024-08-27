@@ -60,12 +60,12 @@
     opacity: 0;
   }
   to {
-    transform: translateY(0); /* Fix the property to translateY for correct animation */
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
-/* Add the animation class to apply the animation */
+/* Animation Application */
 .animate-left {
   animation: slideInLeft 1s ease-out forwards;
 }
@@ -76,5 +76,14 @@
 
 .animate-dot {
   animation: slideUp 1s ease-out forwards;
+}
+
+
+.bg-windows {
+  background-color: #08a1f7; 
+}
+
+.bg-linux {
+  background-color: #FCC624;
 }
 
