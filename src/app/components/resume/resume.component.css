@@ -56,7 +56,7 @@
 /* Animation keyframes for dot */
 @keyframes slideUp {
   from {
-    transform: translateY(30%);
+    transform: translateY(50%);
     opacity: 0;
   }
   to {
