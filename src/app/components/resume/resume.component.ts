@@ -34,13 +34,15 @@ export class ResumeComponent implements AfterViewInit {
                 target.classList.add('animate-right');
               } else if (target.classList.contains('dot')) {
                 target.classList.add('animate-dot');
+              } else if(target.classList.contains('skills-card')){
+                target.classList.add('animate-skills-card');
               }
             }
           });
         }, observerOptions);
 
         // Observe the elements
-        document.querySelectorAll('.left-content, .right-content, .dot').forEach(element => {
+        document.querySelectorAll('.left-content, .right-content, .dot, .skills-card').forEach(element => {
           observer.observe(element);
         });
       } else {
