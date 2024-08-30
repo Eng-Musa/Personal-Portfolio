@@ -1,67 +1,68 @@
 
+
 .circle {
-    width: 30px;
-    height: 30px;
-    background-color: rgb(151, 151, 27);
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: rgb(151, 151, 27);
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 20px;
 }
 
 .name {
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    font-size: 1.3rem; 
-    margin-right: 10px;
-    
-  }
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem; 
+  margin-right: 10px;
+  
+}
 
 .navbar-brand.name:hover{
-  cursor: pointer;
+cursor: pointer;
 }
-  
+
 .title {
-    font-family: 'Times New Roman', serif; 
-    font-weight: lighter; 
-    font-size: 1rem; 
-    letter-spacing: 0.5px;
+  font-family: 'Times New Roman', serif; 
+  font-weight: lighter; 
+  font-size: 1rem; 
+  letter-spacing: 0.5px;
+}
+
+.nav-item {
+  position: relative;
+  padding: 0 10px; 
+  transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+.nav-item:hover{
+  transform: scale(1.05);
+  background-color: #f8f9fa; 
+}
+
+.vertical-line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  height: 24px; 
+  border-right: 1px solid #ccc; 
+}
+
+@media (max-width: 576px) {
+  .name {
+      font-size: 1.1rem; 
+      margin-right: 5px; 
   }
 
-  .nav-item {
-    position: relative;
-    padding: 0 10px; 
-    transition: color 0.5s ease, background-color 0.5s ease;
+  .title {
+      font-size: 0.9rem;
   }
 
-  .nav-item:hover{
-    transform: scale(1.05);
-    background-color: #f8f9fa; 
+  .circle {
+      width: 25px; 
+      height: 25px; 
+      margin-right: 5px; 
+      margin-left: 10px;
   }
-  
-  .vertical-line::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    height: 24px; 
-    border-right: 1px solid #ccc; 
-  }
-
-  @media (max-width: 576px) {
-    .name {
-        font-size: 1.1rem; 
-        margin-right: 5px; 
-    }
-
-    .title {
-        font-size: 0.9rem;
-    }
-
-    .circle {
-        width: 25px; 
-        height: 25px; 
-        margin-right: 5px; 
-        margin-left: 10px;
-    }
 }
