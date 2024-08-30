@@ -88,19 +88,23 @@
 }
 
 
-@keyframes slideUp {
-  from {
-    transform: translateY(50%);
+@keyframes slideUp2 {
+  0% {
+    transform: translateY(30%) scale(0.98);
     opacity: 0;
   }
-  to {
-    transform: translateY(0);
+  60% {
+    transform: translateY(-10%) scale(1.01);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
 
 .animate-skills-card{
-  animation: slideUp 1s ease-out forwards;
+  animation: slideUp2 1s ease-out forwards;
 }
 
 
