@@ -10,25 +10,15 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
-  // hamburger: HTMLElement | null = null;
-  // navMenu: HTMLElement | null = null;
 
-  // ngAfterViewInit() {
-  //   this.hamburger = document.querySelector(".hamburger");
-  //   this.navMenu = document.querySelector(".nav-menu");
+  menuActive = false;
 
-  //   if (this.hamburger && this.navMenu) {
-  //     this.hamburger.addEventListener("click", () => {
-  //       this.hamburger?.classList.toggle("active");
-  //       this.navMenu?.classList.toggle("active");
-  //     });
-
-  //     document.querySelectorAll(".nav-link").forEach(link => {
-  //       (link as HTMLElement).addEventListener("click", () => {
-  //         this.hamburger?.classList.remove("active");
-  //         this.navMenu?.classList.remove("active");
-  //       });
-  //     });
-  //   }
-  // }
+  toggleMenu() {
+    this.menuActive = !this.menuActive;
+    if (this.menuActive) {
+      document.body.classList.add('menu-active');
+    } else {
+      document.body.classList.remove('menu-active');
+    }
+  }
 }
