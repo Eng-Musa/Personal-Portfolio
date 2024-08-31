@@ -6,9 +6,10 @@
 
   /* Animation keyframes for the left content */
 @keyframes slideInLeft {
-    from {
+    0% {
       transform: translateX(-30%);
       opacity: 0;
+      scale: 90%;
     }
     to {
       transform: translateX(0);
@@ -21,6 +22,7 @@
     from {
       transform: translateX(30%);
       opacity: 0;
+      scale: 90%;
     }
     to {
       transform: translateX(0);
