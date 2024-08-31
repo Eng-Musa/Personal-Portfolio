@@ -102,6 +102,10 @@
     margin-left: 10px;
   }
 
+  .vertical-line::after{
+    display: none;
+  }
+
   .hamburger {
     display: block;
   }
