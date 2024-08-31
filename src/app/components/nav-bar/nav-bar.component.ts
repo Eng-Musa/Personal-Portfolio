@@ -21,4 +21,9 @@ export class NavBarComponent {
       document.body.classList.remove('menu-active');
     }
   }
+
+  closeMenu() {
+    this.menuActive = false;
+    document.body.classList.remove('menu-active');
+  }
 }
