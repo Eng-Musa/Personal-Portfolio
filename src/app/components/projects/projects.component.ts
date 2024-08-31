@@ -33,15 +33,13 @@ export class ProjectsComponent implements AfterViewInit{
                 target.classList.add('animate-left');
               } else if (target.classList.contains('content-right')) {
                 target.classList.add('animate-right');
-              } else if (target.classList.contains('content-up')) {
-                target.classList.add('animate-up');
               } 
             }
           });
         }, observerOptions);
 
         // Observe the elements
-        document.querySelectorAll('.content-left, .content-right, content-up').forEach(element => {
+        document.querySelectorAll('.content-left, .content-right').forEach(element => {
           observer.observe(element);
         });
       } else {
