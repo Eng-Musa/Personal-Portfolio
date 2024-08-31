@@ -50,6 +50,25 @@
   border-right: 1px solid #ccc; 
 }
 
+.hamburger {
+  display: none; 
+  padding: 10px;
+  margin-left: 15px; 
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  transition: all 0.3s ease-in-out;
+  background-color: black;
+}
+
+.hamburger:hover .bar {
+  background-color: #555;
+}
+
 @media (max-width: 576px) {
   .name {
     font-size: 1.1rem; 
@@ -66,25 +85,13 @@
     margin-right: 5px; 
     margin-left: 10px;
   }
+
+  .hamburger {
+    display: block; 
+    padding: 10px;
+    margin-left: 15px; 
+  }
 }
 
 
-.hamburger {
-  display: block; /* Ensure the hamburger is visible */
-  cursor: pointer;
-  padding: 10px;
-  margin-left: 15px; /* Add some spacing from the nav items */
-}
 
-.bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px 0;
-  transition: all 0.3s ease-in-out;
-  background-color: black;
-}
-
-.hamburger:hover .bar {
-  background-color: #555; /* Change color on hover for a subtle effect */
-}
