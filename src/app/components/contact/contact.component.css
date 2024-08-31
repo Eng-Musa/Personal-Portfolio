@@ -4,9 +4,17 @@
 
 .input-field{
     border: 1px solid #ccc; 
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease-in-out;
 }
 
 .input-field:hover {
     border-color: black; 
+    scale: 1.01;
+}
+
+.input-field:focus {
+    outline: none; 
+    border-color: black; 
+    box-shadow: none; 
+    scale: 1.01;
 }
