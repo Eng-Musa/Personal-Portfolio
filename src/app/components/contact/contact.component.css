@@ -39,6 +39,9 @@
     1% {
       opacity: 0.1; /* Show when the animation starts */
     }
+    90%{
+        transform: translateX(8%);
+    }
     100% {
       opacity: 1;
       transform: translateX(0);
