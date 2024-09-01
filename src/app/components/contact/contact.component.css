@@ -1,30 +1,21 @@
-.btn-primary {
-    background-color: rgb(4, 4, 91);
+h1 {
+    font-weight: bold;
+    letter-spacing: 2px;
   }
   
-  .input-field {
+  .form-label {
+    font-weight: 600;
+  }
+  
+  input, textarea {
     border: 2px solid #000;
-    transition: border-color 0.3s ease-in-out, scale 0.3s ease-in-out;
+    font-family: 'Roboto', sans-serif;
+    transition: border-color 0.3s ease-in-out;
   }
   
-  .input-field:hover {
-    border-color: rgb(4, 4, 91);
-    scale: 1.02;
-  }
-  
-  .input-field:focus {
+  input:focus, textarea:focus {
+    border-color: #444;
     outline: none;
-    border-color: rgb(4, 4, 91);
-    box-shadow: 0 0 5px rgba(4, 4, 91, 0.5);
-    scale: 1.02;
-  }
-  
-  hr.my-4 {
-    border-top-color: #000;
-  }
-  
-  .icon-hover:hover {
-    transform: translateY(8px);
-    transition: transform 0.3s ease-in-out;
+    box-shadow: none;
   }
   
