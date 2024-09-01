@@ -1,114 +1,135 @@
-.form-container{
-    padding-top: 70px;
-    padding-bottom: 50px;
+.form-container {
+  padding-top: 70px;
+  padding-bottom: 50px;
+  scale: 0.9;
 }
 
 .circle {
-    width: 40px;
-    height: 40px;
-    background-color: #c3b0b0;
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #c3b0b0;
+  border-radius: 50%;
+}
+
+h1 {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.form-label {
+  font-weight: 600;
+}
+
+input,
+textarea {
+  border: 2px solid #000;
+  font-family: 'Roboto', sans-serif;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+input:hover,
+textarea:hover {
+  border-color: #888;
+  transform: scale(1.02);
+}
+
+input:focus,
+textarea:focus {
+  border-color: #444;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0; /* Keep hidden */
+    transform: translateX(-100%);
   }
-  
-  h1 {
-    font-weight: bold;
-    letter-spacing: 2px;
+  1% {
+    opacity: 0.1; /* Show when the animation starts */
   }
-  
-  .form-label {
-    font-weight: 600;
+  90% {
+    transform: translateX(8%);
   }
-  
-  input, textarea {
-    border: 2px solid #000;
-    font-family: 'Roboto', sans-serif;
-    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  input:hover, textarea:hover {
-    border-color: #888;
-    transform: scale(1.02);
+}
+
+.header {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.circle {
+  opacity: 0;
+  animation: slideInLeft 1s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes slideInRightScaleUp {
+  0% {
+    opacity: 0;
+    transform: translateX(10%) scale(0.8);
   }
-  
-  input:focus, textarea:focus {
-    border-color: #444;
-    outline: none;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  1% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+form {
+  animation: slideInRightScaleUp 1s ease-out forwards;
+}
+
+input,
+textarea {
+  animation: slideInRightScaleUp 1.2s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+@keyframes growAndShrink {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.icon-animation {
+  animation: growAndShrink 1s ease-out forwards;
+  display: inline-block;
+}
+
+.icon-animation:hover {
+  color: #007bff;
+  transform: scale(1.5);
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Media query for small screens */
+@media (max-width: 576px) {
+  .container {
+    height: auto;
+    padding-bottom: 20px; 
   }
 
-  @keyframes slideInLeft {
-    0% {
-      opacity: 0; /* Keep hidden */
-      transform: translateX(-100%);
-    }
-    1% {
-      opacity: 0.1; /* Show when the animation starts */
-    }
-    90%{
-        transform: translateX(8%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .form-container {
+    padding-bottom: 20px; 
   }
-  
-  .header {
-    animation: slideInLeft 1s ease-out forwards;
+
+  .hr-small-screen {
+    margin-top: 1rem; 
+    margin-bottom: 1rem; 
   }
-  
-  .circle {
-    opacity: 0;
-    animation: slideInLeft 1s ease-out forwards;
-    animation-delay: 0.6s;
-  }
-  
-  @keyframes slideInRightScaleUp {
-    0% {
-      opacity: 0;
-      transform: translateX(10%) scale(0.8);
-    }
-    1%{
-        opacity: 0.1;
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
-  }
-  
-  form {
-    animation: slideInRightScaleUp 1s ease-out forwards;
-  }
-  
-  input, textarea {
-    animation: slideInRightScaleUp 1.2s ease-out forwards;
-    animation-delay: 0.2s;
-    opacity: 0;
-  }
-  
-  @keyframes growAndShrink {
-    0% {
-      transform: scale(0);
-      opacity: 0;
-    }
-    50% {
-      transform: scale(1.4);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  .icon-animation {
-    animation: growAndShrink 1s ease-out forwards;
-    display: inline-block;
-  }
-  
-  .icon-animation:hover {
-    color: #007bff; 
-    transform: scale(1.5);
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-  }
-  
+}
