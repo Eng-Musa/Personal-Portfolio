@@ -29,6 +29,15 @@
   background-color: black;
 }
 
+h5 {
+  
+  font-size: 1em;
+  color: #333;
+  letter-spacing: 2px;
+  text-align: right;
+  padding-left: 10px;
+}
+
 /* Animation keyframes for the left content */
 @keyframes slideInLeft {
   from {
@@ -106,6 +115,4 @@
 .animate-skills-card{
   animation: slideUp2 1s ease-out forwards;
 }
-
-
 
