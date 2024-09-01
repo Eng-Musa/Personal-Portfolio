@@ -37,8 +37,25 @@
 }
 
 .nav-link {
-  color: #000; /* Ensure the text is visible */
+  color: #000;   
 }
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  background-color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover::before {
+  width: 100%;
+  left: 0%;
+}
+
 
 .vertical-line::after {
   content: '';
@@ -141,3 +158,4 @@
     overflow: hidden;
   }
 }
+
