@@ -1,7 +1,7 @@
 .circle {
     width: 40px;
     height: 40px;
-    background-color: #c3b0b0; /* Change color as needed */
+    background-color: #c3b0b0;
     border-radius: 50%;
   }
   
@@ -17,12 +17,17 @@
   input, textarea {
     border: 2px solid #000;
     font-family: 'Roboto', sans-serif;
-    transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  input:hover, textarea:hover {
+    border-color: #888;
+    transform: scale(1.02);
   }
   
   input:focus, textarea:focus {
     border-color: #444;
     outline: none;
-    box-shadow: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   }
   
