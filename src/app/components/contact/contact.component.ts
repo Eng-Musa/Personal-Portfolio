@@ -34,7 +34,7 @@ export class ContactComponent implements OnInit {
   }
 
  
-  sendEmail(): void {
+  sendEmailToMe(): void {
     console.log("Reached");
     
     const params = {
