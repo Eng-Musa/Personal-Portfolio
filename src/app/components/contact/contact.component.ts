@@ -18,10 +18,10 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      message: ['']
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required]]
     });
   }
 
