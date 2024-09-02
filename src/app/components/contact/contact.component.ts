@@ -51,9 +51,10 @@ export class ContactComponent implements OnInit {
 
     const serviceID = 'service_dq9mftf';
     const templateID = 'template_nf67ay3';
+    const publicKey = '9DKWFtLDRvj4w03sQ';
 
     emailjs
-      .send(serviceID, templateID, params, '9DKWFtLDRvj4w03sQ')
+      .send(serviceID, templateID, params, publicKey)
       .then((res) => {
         this.resetForm();
         this.showAlert('Message sent successfully!', 'success');
