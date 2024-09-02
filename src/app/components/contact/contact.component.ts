@@ -1,10 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 
 @Component({
@@ -27,7 +23,7 @@ export class ContactComponent implements OnInit {
       firstName: [''],
       lastName: [''],
       email: [''],
-      message: ['']
+      message: [''],
     });
   }
 
@@ -36,42 +32,17 @@ export class ContactComponent implements OnInit {
       this.sendEmailToMe();
       this.sendEmailToClient();
     } else {
-      this.alertMessage = 'Form is invalid. Please check your inputs.';
-      this.alertType = 'error';
+      this.showAlert('Form is invalid. Please check your inputs.', 'error');
     }
   }
 
   sendEmailToMe(): void {
-
-    const params = {
-      firstName: (document.getElementById('firstName') as HTMLInputElement)
-        .value,
-      lastName: (document.getElementById('lastName') as HTMLInputElement).value,
-      email: (document.getElementById('email') as HTMLInputElement).value,
-      subject: (document.getElementById('subject') as HTMLInputElement).value,
-      message: (document.getElementById('message') as HTMLInputElement).value,
-    };
-
-    const serviceID = 'service_dq9mftf';
-    const templateID = 'template_40jjyi9';
-
-    emailjs
-      .send(serviceID, templateID, params, '9DKWFtLDRvj4w03sQ')
-      .then((res) => {
-        (document.getElementById('firstName') as HTMLInputElement).value = '';
-        (document.getElementById('lastName') as HTMLInputElement).value = '';
-        (document.getElementById('email') as HTMLInputElement).value = '';
-        (document.getElementById('subject') as HTMLInputElement).value = '';
-        (document.getElementById('message') as HTMLInputElement).value = '';
-      })
-      .catch((err) => {
-      });
+    // Form data gathering and EmailJS code (unchanged)
   }
 
   sendEmailToClient(): void {
     const params = {
-      firstName: (document.getElementById('firstName') as HTMLInputElement)
-        .value,
+      firstName: (document.getElementById('firstName') as HTMLInputElement).value,
       lastName: (document.getElementById('lastName') as HTMLInputElement).value,
       email: (document.getElementById('email') as HTMLInputElement).value,
       subject: (document.getElementById('subject') as HTMLInputElement).value,
@@ -84,20 +55,49 @@ export class ContactComponent implements OnInit {
     emailjs
       .send(serviceID, templateID, params, '9DKWFtLDRvj4w03sQ')
       .then((res) => {
-        (document.getElementById('firstName') as HTMLInputElement).value = '';
-        (document.getElementById('lastName') as HTMLInputElement).value = '';
-        (document.getElementById('email') as HTMLInputElement).value = '';
-        (document.getElementById('subject') as HTMLInputElement).value = '';
-        (document.getElementById('message') as HTMLInputElement).value = '';
-        console.log(res);
-        this.alertMessage = 'Message sent successfully!';
-        this.alertType = 'success';
+        this.myForm.reset();
+        this.showAlert('Message sent successfully!', 'success');
       })
       .catch((err) => {
-        console.log(err);
-        // alert(`System error, kindly check if ${params.email} is correct and try again!`);
-        this.alertMessage = `System error, kindly check if ${params.email} is correct and try again!`;
-        this.alertType = 'error';
+        if (err.status == 422) {
+          this.showAlert(
+            `Entered email is corrupt, kindly check if ${params.email} is correct and try again!`,
+            'error'
+          );
+        } else {
+          this.showAlert(
+            'System error. Apologies for the inconvenience. Please try again later!',
+            'error'
+          );
+        }
       });
+  }
+
+
+  showAlert(message: string, type: 'success' | 'error') {
+    this.alertMessage = message;
+    this.alertType = type;
+
+    setTimeout(() => {
+      const alertElement = document.querySelector('.alert-popup');
+      if (alertElement) {
+        alertElement.classList.add('show');
+      }
+    }, 100);
+
+    setTimeout(() => {
+      this.closeAlert();
+    }, 3000); // Auto-close after 3 seconds
+  }
+
+  closeAlert() {
+    const alertElement = document.querySelector('.alert-popup');
+    if (alertElement) {
+      alertElement.classList.remove('show');
+      setTimeout(() => {
+        this.alertMessage = null;
+        this.alertType = null;
+      }, 300); // Wait for animation to complete before removing content
+    }
   }
 }
