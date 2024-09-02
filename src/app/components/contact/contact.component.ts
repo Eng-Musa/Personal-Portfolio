@@ -39,6 +39,7 @@ export class ContactComponent implements OnInit {
     
     const params = {
       firstName: (document.getElementById("firstName") as HTMLInputElement).value,
+      lastName: (document.getElementById("firstName") as HTMLInputElement).value,
       email: (document.getElementById("email") as HTMLInputElement).value,
       subject: (document.getElementById("subject") as HTMLInputElement).value,
       message: (document.getElementById("message") as HTMLInputElement).value
@@ -50,13 +51,16 @@ export class ContactComponent implements OnInit {
     emailjs.send(serviceID, templateID, params, "9DKWFtLDRvj4w03sQ")
       .then((res) => {
         (document.getElementById("firstName") as HTMLInputElement).value = "";
+        (document.getElementById("lastName") as HTMLInputElement).value = "";
         (document.getElementById("email") as HTMLInputElement).value = "";
+        (document.getElementById("subject") as HTMLInputElement).value = "";
         (document.getElementById("message") as HTMLInputElement).value = "";
         console.log(res);
         alert("Message sent!");
       })
       .catch((err) => {
         console.log(err);
+        alert("System error, kindly try later!")
       });
   }
 }
