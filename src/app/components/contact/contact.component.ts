@@ -55,7 +55,7 @@ export class ContactComponent implements OnInit {
     emailjs
       .send(serviceID, templateID, params, '9DKWFtLDRvj4w03sQ')
       .then((res) => {
-        this.myForm.reset();
+        this.resetForm();
         this.showAlert('Message sent successfully!', 'success');
       })
       .catch((err) => {
@@ -71,6 +71,14 @@ export class ContactComponent implements OnInit {
           );
         }
       });
+  }
+
+  resetForm() : void{
+    (document.getElementById('firstName') as HTMLInputElement).value = '';
+    (document.getElementById('lastName') as HTMLInputElement).value = '';
+    (document.getElementById('email') as HTMLInputElement).value = '';
+    (document.getElementById('subject') as HTMLInputElement).value = '';
+    (document.getElementById('message') as HTMLInputElement).value = '';
   }
 
 
