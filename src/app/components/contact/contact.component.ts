@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import emailjs from '@emailjs/browser';
+import { publicKey, serviceID, templateID } from '../../../environments/environment.prod';
 
 @Component({
   selector: 'app-contact',
@@ -49,9 +50,7 @@ export class ContactComponent implements OnInit {
       message: (document.getElementById('message') as HTMLInputElement).value,
     };
 
-    const serviceID = 'service_dq9mftf';
-    const templateID = 'template_nf67ay3';
-    const publicKey = '9DKWFtLDRvj4w03sQ';
+ 
 
     emailjs
       .send(serviceID, templateID, params, publicKey)
