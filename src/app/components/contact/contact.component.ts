@@ -1,40 +1,43 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
-  ReactiveFormsModule,
-  Validators,
+  ReactiveFormsModule
 } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
 })
 export class ContactComponent implements OnInit {
   myForm!: FormGroup;
 
+  alertMessage: string | null = null;
+  alertType: 'success' | 'error' | null = null;
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', [Validators.required]],
+      firstName: [''],
+      lastName: [''],
+      email: [''],
+      message: ['']
     });
   }
 
   handleFormSubmit() {
-    if (this.myForm.invalid) {
+    if (this.myForm.valid) {
       this.sendEmailToMe();
       this.sendEmailToClient();
     } else {
-      console.log('Form is invalid');
-      alert("Form is invalid");
+      this.alertMessage = 'Form is invalid. Please check your inputs.';
+      this.alertType = 'error';
     }
   }
 
@@ -62,8 +65,6 @@ export class ContactComponent implements OnInit {
         (document.getElementById('message') as HTMLInputElement).value = '';
       })
       .catch((err) => {
-        console.log(err);
-        alert('System error, kindly try later!');
       });
   }
 
@@ -89,11 +90,14 @@ export class ContactComponent implements OnInit {
         (document.getElementById('subject') as HTMLInputElement).value = '';
         (document.getElementById('message') as HTMLInputElement).value = '';
         console.log(res);
-        alert('Message sent!');
+        this.alertMessage = 'Message sent successfully!';
+        this.alertType = 'success';
       })
       .catch((err) => {
         console.log(err);
-        alert('System error, kindly try later!');
+        // alert(`System error, kindly check if ${params.email} is correct and try again!`);
+        this.alertMessage = `System error, kindly check if ${params.email} is correct and try again!`;
+        this.alertType = 'error';
       });
   }
 }
