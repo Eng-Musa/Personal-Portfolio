@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { publicKey, serviceID, templateID, templateID1 } from '../../../environments/environment.prod';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-contact',
@@ -17,7 +18,7 @@ export class ContactComponent implements OnInit {
   alertMessage: string | null = null;
   alertType: 'success' | 'error' | null = null;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private toastr:ToastrService) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -33,7 +34,15 @@ export class ContactComponent implements OnInit {
       this.sendEmailToMe();
       this.sendEmailToClient();
     } else {
-      this.showAlert('Form is invalid. Please check your inputs.', 'error');
+      this.toastr.error(`Message sent successfully!`, 'Error', {
+        timeOut: 5000, // Increased time to make it more visible
+        progressBar: true, // Add a progress bar
+        progressAnimation: "decreasing",
+        positionClass: "toast-top-center", // Corrected position class
+        closeButton: true, // Add a close button
+        newestOnTop: true, // Makes sure the newest toast appears on top
+        tapToDismiss: true, // Allows dismissing on click
+      })
     }
   }
 
@@ -62,25 +71,43 @@ export class ContactComponent implements OnInit {
       message: (document.getElementById('message') as HTMLInputElement).value,
     };
 
- 
+
 
     emailjs
       .send(serviceID, templateID, params, publicKey)
       .then((res) => {
-        this.resetForm();
-        this.showAlert('Message sent successfully!', 'success');
+        this.toastr.success(`Message sent successfully!`, 'Success', {
+          timeOut: 5000, // Increased time to make it more visible
+          progressBar: true, // Add a progress bar
+          progressAnimation: "decreasing",
+          positionClass: "toast-top-center", // Corrected position class
+          closeButton: true, // Add a close button
+          newestOnTop: true, // Makes sure the newest toast appears on top
+          tapToDismiss: true, // Allows dismissing on click
+        })
       })
       .catch((err) => {
         if (err.status == 422) {
-          this.showAlert(
-            `Entered email is corrupt, kindly check if ${params.email} is correct and try again!`,
-            'error'
-          );
+          this.toastr.error(`Entered email is corrupt, kindly check if email: ${params.email} is correct and try again!`, 'Error', {
+            timeOut: 5000, // Increased time to make it more visible
+            progressBar: true, // Add a progress bar
+            progressAnimation: "decreasing",
+            positionClass: "toast-top-center", // Corrected position class
+            closeButton: true, // Add a close button
+            newestOnTop: true, // Makes sure the newest toast appears on top
+            tapToDismiss: true, // Allows dismissing on click
+          })
         } else {
-          this.showAlert(
-            'System error. Apologies for the inconvenience. Please try again later!',
-            'error'
-          );
+          this.toastr.error("Network error. Apologies for the inconvenience. Please try again later!", 'Error', {
+            timeOut: 5000, // Increased time to make it more visible
+            progressBar: true, // Add a progress bar
+            progressAnimation: "decreasing",
+            positionClass: "toast-top-center", // Corrected position class
+            closeButton: true, // Add a close button
+            newestOnTop: true, // Makes sure the newest toast appears on top
+            tapToDismiss: true, // Allows dismissing on click
+          });
+
         }
       });
   }
@@ -93,31 +120,4 @@ export class ContactComponent implements OnInit {
     (document.getElementById('message') as HTMLInputElement).value = '';
   }
 
-
-  showAlert(message: string, type: 'success' | 'error') {
-    this.alertMessage = message;
-    this.alertType = type;
-
-    setTimeout(() => {
-      const alertElement = document.querySelector('.alert-popup');
-      if (alertElement) {
-        alertElement.classList.add('show');
-      }
-    }, 100);
-
-    setTimeout(() => {
-      this.closeAlert();
-    }, 3000); // Auto-close after 3 seconds
-  }
-
-  closeAlert() {
-    const alertElement = document.querySelector('.alert-popup');
-    if (alertElement) {
-      alertElement.classList.remove('show');
-      setTimeout(() => {
-        this.alertMessage = null;
-        this.alertType = null;
-      }, 300); // Wait for animation to complete before removing content
-    }
-  }
 }

@@ -121,77 +121,15 @@ textarea {
 @media (max-width: 576px) {
   .container {
     height: auto;
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
   }
 
   .form-container {
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
   }
 
   .hr-small-screen {
-    margin-top: 1rem; 
-    margin-bottom: 1rem; 
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
-
-/* contact.component.css */
-.alert {
-  padding: 16px 16px 16px 36px;
-  margin: 20px 0;
-  border-radius: 4px;
-  font-family: Arial, sans-serif;
-  position: relative;
-  display: flex;
-  align-items: center;
-  opacity: 0; /* Start with the alert hidden */
-  transform: translateY(-100%); /* Position above the viewport */
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.alert-popup {
-  position: fixed;
-  top: 20px; /* Adjust the distance from the top */
-  left: 50%;
-  transform: translateX(-50%) translateY(-100%); /* Center horizontally and position above the viewport */
-  z-index: 9999; /* Ensure it appears above other elements */
-  width: 80%; /* Optional: Adjust width */
-  max-width: 600px; /* Optional: Max width */
-}
-
-.alert-popup.show {
-  opacity: 1; /* Make the alert visible */
-  transform: translateX(-50%) translateY(0); /* Slide down into view */
-}
-
-.alert-success {
-  border-left: 4px solid #4caf50;
-  background-color: #dff0d8;
-  color: #3c763d;
-}
-
-.alert-error {
-  border-left: 4px solid #f44336;
-  background-color: #f8d7da;
-  color: #721c24;
-}
-
-.alert::before {
-  content: '';
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: currentColor;
-}
-
-.alert-success::before {
-  background-color: #4caf50;
-}
-
-.alert-error::before {
-  background-color: #f44336;
-}
-
