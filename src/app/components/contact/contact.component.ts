@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
   alertMessage: string | null = null;
   alertType: 'success' | 'error' | null = null;
 
-  constructor(private fb: FormBuilder, private toastr:ToastrService) {}
+  constructor(private fb: FormBuilder, private toaster:ToastrService) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -29,12 +29,22 @@ export class ContactComponent implements OnInit {
     });
   }
 
+  valid(): boolean {
+    const { firstName, lastName, email, message } = this.myForm.value;
+
+    if (firstName.length > 1 && lastName.length > 1 && email.length > 1 && message.length > 1) {
+      return true;
+    }
+
+    return false;
+  }
+
   handleFormSubmit() {
-    if (this.myForm.valid) {
+    if (this.valid()) {
       this.sendEmailToMe();
       this.sendEmailToClient();
     } else {
-      this.toastr.error(`Message sent successfully!`, 'Error', {
+      this.toaster.error(`Kindly fill all the required fields!`, 'Error', {
         timeOut: 5000, // Increased time to make it more visible
         progressBar: true, // Add a progress bar
         progressAnimation: "decreasing",
@@ -76,7 +86,7 @@ export class ContactComponent implements OnInit {
     emailjs
       .send(serviceID, templateID, params, publicKey)
       .then((res) => {
-        this.toastr.success(`Message sent successfully!`, 'Success', {
+        this.toaster.success(`Message sent successfully!`, 'Success', {
           timeOut: 5000, // Increased time to make it more visible
           progressBar: true, // Add a progress bar
           progressAnimation: "decreasing",
@@ -88,7 +98,7 @@ export class ContactComponent implements OnInit {
       })
       .catch((err) => {
         if (err.status == 422) {
-          this.toastr.error(`Entered email is corrupt, kindly check if email: ${params.email} is correct and try again!`, 'Error', {
+          this.toaster.error(`Entered email is corrupt, kindly check if email: ${params.email} is correct and try again!`, 'Error', {
             timeOut: 5000, // Increased time to make it more visible
             progressBar: true, // Add a progress bar
             progressAnimation: "decreasing",
@@ -98,7 +108,7 @@ export class ContactComponent implements OnInit {
             tapToDismiss: true, // Allows dismissing on click
           })
         } else {
-          this.toastr.error("Network error. Apologies for the inconvenience. Please try again later!", 'Error', {
+          this.toaster.error("Network error. Apologies for the inconvenience. Please try again later!", 'Error', {
             timeOut: 5000, // Increased time to make it more visible
             progressBar: true, // Add a progress bar
             progressAnimation: "decreasing",
