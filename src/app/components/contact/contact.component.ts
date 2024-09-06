@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { publicKey, serviceID, templateID, templateID1 } from '../../../environments/environment.prod';
 import {ToastrService} from "ngx-toastr";
@@ -22,29 +22,20 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      message: [''],
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.minLength(2)]],
+      subject: ['', [Validators.required, Validators.minLength(2)]],
+      message: ['', [Validators.required,Validators.minLength(10)]],
     });
   }
 
-  valid(): boolean {
-    const { firstName, lastName, email, message } = this.myForm.value;
-
-    if (firstName.length > 1 && lastName.length > 1 && email.length > 1 && message.length > 1) {
-      return true;
-    }
-
-    return false;
-  }
-
   handleFormSubmit() {
-    if (this.valid()) {
+    if (this.myForm.valid) {
       this.sendEmailToMe();
       this.sendEmailToClient();
     } else {
-      this.toaster.error(`Kindly fill all the required fields!`, 'Error', {
+      this.toaster.error(`Please fill in all required fields!`, 'Error', {
         timeOut: 5000, // Increased time to make it more visible
         progressBar: true, // Add a progress bar
         progressAnimation: "decreasing",
