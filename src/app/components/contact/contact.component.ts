@@ -82,7 +82,7 @@ export class ContactComponent implements OnInit {
           progressBar: true, // Add a progress bar
           progressAnimation: "decreasing",
           positionClass: "toast-top-center", // Corrected position class
-          closeButton: true, // Add a close button
+          closeButton: false, // Add a close button
           newestOnTop: true, // Makes sure the newest toast appears on top
           tapToDismiss: true, // Allows dismissing on click
         })
@@ -94,7 +94,7 @@ export class ContactComponent implements OnInit {
             progressBar: true, // Add a progress bar
             progressAnimation: "decreasing",
             positionClass: "toast-top-center", // Corrected position class
-            closeButton: true, // Add a close button
+            closeButton: false, // Add a close button
             newestOnTop: true, // Makes sure the newest toast appears on top
             tapToDismiss: true, // Allows dismissing on click
           })
@@ -104,7 +104,7 @@ export class ContactComponent implements OnInit {
             progressBar: true, // Add a progress bar
             progressAnimation: "decreasing",
             positionClass: "toast-top-center", // Corrected position class
-            closeButton: true, // Add a close button
+            closeButton: false, // Add a close button
             newestOnTop: true, // Makes sure the newest toast appears on top
             tapToDismiss: true, // Allows dismissing on click
           });
