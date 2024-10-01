@@ -7,6 +7,12 @@
   margin-left: 20px;
 }
 
+.circle:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
 .name {
   font-family: "Arial", sans-serif;
   font-weight: bold;
@@ -16,6 +22,8 @@
 
 .navbar-brand.name:hover {
   cursor: pointer;
+  transform: scale(1.04);
+  transition: transform 0.3s ease-in-out;
 }
 
 .title {
