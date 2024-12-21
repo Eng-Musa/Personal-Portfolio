@@ -6,9 +6,9 @@ import { isPlatformBrowser } from '@angular/common';
   standalone: true,
   imports: [],
   templateUrl: './projects.component.html',
-  styleUrl: './projects.component.css'
+  styleUrls: ['./projects.component.css']
 })
-export class ProjectsComponent implements AfterViewInit{
+export class ProjectsComponent implements AfterViewInit {
 
   private hasLoggedError = false;
 
@@ -18,22 +18,25 @@ export class ProjectsComponent implements AfterViewInit{
     if (isPlatformBrowser(this.platformId)) {
       if ('IntersectionObserver' in window) {
         const observerOptions = {
-          root: null, // Use the viewport as the root
+          root: null, 
           rootMargin: '0px',
           threshold: 0.1 // Trigger when 10% of the element is visible
         };
 
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const target = entry.target as HTMLElement;
+            const target = entry.target as HTMLElement;
 
+            if (entry.isIntersecting) {
               // Add the appropriate animation class based on the element's class
               if (target.classList.contains('content-left')) {
                 target.classList.add('animate-left');
               } else if (target.classList.contains('content-right')) {
                 target.classList.add('animate-right');
-              } 
+              }
+            } else {
+              // Remove animation classes when the element exits the viewport
+              target.classList.remove('animate-left', 'animate-right');
             }
           });
         }, observerOptions);
@@ -52,5 +55,4 @@ export class ProjectsComponent implements AfterViewInit{
       }
     }
   }
-
 }
